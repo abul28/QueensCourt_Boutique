@@ -45,12 +45,13 @@ const ProductDetails = () => {
   const whatsappGroupLink = "https://chat.whatsapp.com/BBkmScIBR1y0fZbLiP2WsI";
 
   const handlePurchaseClick = () => {
-    if (whatsappGroupLink) {
-      window.open(whatsappGroupLink, "_blank");
-    } else {
-      alert("WhatsApp group link is not set.");
-    }
+    const message = `*Product Name:* ${product.name}%0A*Color:* ${product.color}%0A*Price:* ₹${product.price}%0A*Selected Size:* ${selectedSize}`;
+    const encodedMessage = encodeURIComponent(message);
+  
+    const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
+    window.open(whatsappLink, "_blank");
   };
+  
 
   return (
     <div className="product-details-container">
