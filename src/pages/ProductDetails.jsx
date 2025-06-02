@@ -93,17 +93,17 @@ const ProductDetails = () => {
         {/* Assurance Section */}
         <div className="assurance-section">
           <div className="assurance-item">
-            <WorkspacePremiumIcon sx={{ fontSize: 28, color: "#3f51b5" }} />
+            <WorkspacePremiumIcon sx={{ fontSize: 28, color: "#553C8B" }} />
             <p><span className="assurance-line">Original</span><br /><span className="assurance-line">Product</span></p>
           </div>
 
           <div className="assurance-item">
-            <VerifiedIcon sx={{ fontSize: 28, color: "#3f51b5" }} />
+            <VerifiedIcon sx={{ fontSize: 28, color: "#553C8B" }} />
             <p><span className="assurance-line">Quality</span><br /><span className="assurance-line">Assured</span></p>
           </div>
 
           <div className="assurance-item">
-            <StorefrontIcon sx={{ fontSize: 28, color: "#3f51b5" }} />
+            <StorefrontIcon sx={{ fontSize: 28, color: "#553C8B" }} />
             <p><span className="assurance-line">Verified</span><br /><span className="assurance-line">Seller</span></p>
           </div>
         </div>

@@ -16,18 +16,18 @@ const ManageProductTabs = () => {
 
   return (
     <Box sx={{ width: '100%', typography: 'body1', padding: 1 }}>
-      <Tabs value={selectedTab} onChange={handleChange} aria-label="Product Tabs" textColor="inherit" // or "primary"
+      <Tabs value={selectedTab} onChange={handleChange} aria-label="Product Tabs" textColor="#994ECC" // or "primary"
   indicatorColor="secondary" // changes the indicator line
   sx={{
     '& .MuiTab-root': {
-      color: 'black', // default text color
+      color: '#553C8B', // default text color
     },
     '& .Mui-selected': {
-      color: 'black', // selected tab label color
+      color: '#553C8B', // selected tab label color
       fontWeight: 'bold',
     },
     '& .MuiTabs-indicator': {
-      backgroundColor: 'black', // indicator line color
+      backgroundColor: '#553C8B', // indicator line color
     },
   }}>
         <Tab label="Add Product"/>

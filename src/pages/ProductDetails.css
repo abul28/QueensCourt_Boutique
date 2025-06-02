@@ -102,9 +102,9 @@
     }
     
     .size-button.selected {
-      background-color: black;
+      background-color: #553C8B;
       color: #fff;
-      border-color: black;
+      border-color: #553C8B;
     }
     
     .assurance-section {
@@ -364,9 +364,9 @@
   }
   
   .size-button.selected {
-    background-color: black;
+    background-color: #553C8B;
     color: #fff;
-    border-color: black;
+    border-color: #553C8B;
   }
   
   .assurance-section {
