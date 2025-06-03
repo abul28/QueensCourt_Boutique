@@ -14,8 +14,8 @@ export default defineConfig({
         description: 'Queens Court Fashion Store',
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#880e4f', // deep pink/maroon — adjust as needed
+        background_color: '#3E187A',
+        theme_color: '#000000', // deep pink/maroon — adjust as needed
         icons: [
           {
             src: 'icons/icon-192x192.png',
