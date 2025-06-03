@@ -338,7 +338,7 @@ const ManageProducts = () => {
           size="small"
           fullWidth
           margin="normal"
-          required
+          
         />
         <TextField
           label="Pattern"

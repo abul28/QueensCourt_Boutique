@@ -44,31 +44,31 @@ const BottomNav = ({ isAuthenticated, isGuest, setIsAuthenticated, setIsGuest })
     <div className={`bottom-nav ${showNav ? "visible" : "hidden"}`}>
       
       <div onClick={() => goToPage("/home")}>
-        <HomeIcon sx={{ color: "#3E187A" }} />
+        <HomeIcon sx={{ color: "#553C8B" }} />
         <span>Home</span>
       </div>
 
       <div onClick={() => goToPage("/categories")}>
-        <CategoryIcon sx={{ color: "#3E187A" }} />
+        <CategoryIcon sx={{ color: "#553C8B" }} />
         <span>Categories</span>
       </div>
 
       {/* Show Manage Products only if authenticated and not a guest */}
       {isAuthenticated && !isGuest && (
         <div onClick={() => goToPage("/products")}>
-          <ListIcon sx={{ color: "#3E187A" }} />
+          <ListIcon sx={{ color: "#553C8B" }} />
           <span>Manage</span>
         </div>
       )}
 
       {(isAuthenticated || isGuest) ? (
         <div onClick={handleLogout}>
-          <PersonIcon sx={{ color: "#3E187A" }} />
+          <PersonIcon sx={{ color: "#553C8B" }} />
           <span>Account</span>
         </div>
       ) : (
         <div onClick={() => goToPage("/login")}>
-          <PersonIcon sx={{ color: "#3E187A" }} />
+          <PersonIcon sx={{ color: "#553C8B" }} />
           <span>Account</span>
         </div>
       )}

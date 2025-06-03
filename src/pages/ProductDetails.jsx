@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState("M"); // Default size is 'M'
   const [availableSizes, setAvailableSizes] = useState([]); // Store fetched sizes
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -42,17 +43,13 @@ const ProductDetails = () => {
     );
   }
 
-  const whatsappGroupLink = "https://chat.whatsapp.com/BBkmScIBR1y0fZbLiP2WsI";
-
   const handlePurchaseClick = () => {
-    const message = `*Product Name:* ${product.name}%0A*Color:* ${product.color}%0A*Price:* ₹${product.price}%0A*Selected Size:* ${selectedSize}`;
-    const encodedMessage = encodeURIComponent(message);
-  
-    const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
-    window.open(whatsappLink, "_blank");
+    const phoneNumber = "9840402558"; // Your business number
+    const message = `*Product Name:* ${product.name}\n*Color:* ${product.color}\n*Price:* ₹${product.price}\n*Size:* ${selectedSize}\n*Quantity:* ${quantity}\n*Image:* ${product.imageUrl}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
   
-
   return (
     <div className="product-details-container">
   <div className="product-scrollable-content">
@@ -69,10 +66,18 @@ const ProductDetails = () => {
         <h1 className="product-title">{product.name}</h1>
 
         <div className="price-section">
-          <span className="current-price">₹{product.price}</span>
-          <span className="original-price">₹{product.originalPrice}</span>
-          <span className="discount">{product.discount}% off</span>
-        </div>
+  <div className="price-info">
+    <span className="current-price">₹{product.price}</span>
+    <span className="original-price">₹{product.originalPrice}</span>
+    <span className="discount">{product.discount}% off</span>
+  </div>
+  <div className="quantity-selector">
+    <button onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>-</button>
+    <span>{quantity}</span>
+    <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
+  </div>
+</div>
+
 
         {/* Size Selection */}
         <div className="size-selection">
