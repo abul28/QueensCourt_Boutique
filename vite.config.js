@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/icon-192x192.png', 'icons/icon-512x512.png'],
+      includeAssets: ['icons/qcb-logo.png', 'icons/qcb-logo.png'],
       manifest: {
         name: 'Queens Court',
         short_name: 'QueensCourt',
