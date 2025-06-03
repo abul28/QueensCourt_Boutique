@@ -45,10 +45,22 @@ const ProductDetails = () => {
 
   const handlePurchaseClick = () => {
     const phoneNumber = "9840402558"; // Your business number
-    const message = `*Product Name:* ${product.name}\n*Color:* ${product.color}\n*Price:* ₹${product.price}\n*Size:* ${selectedSize}\n*Quantity:* ${quantity}\n*Image:* ${product.imageUrl}`;
+  
+    // Get current order number from localStorage or start at 1
+    let orderNumber = localStorage.getItem("orderNumber");
+    orderNumber = orderNumber ? parseInt(orderNumber) + 1 : 1;
+  
+    // Save updated order number back to localStorage
+    localStorage.setItem("orderNumber", orderNumber);
+  
+    // Format order number as #0001, #0002, etc.
+    const formattedOrderNumber = `#${orderNumber.toString().padStart(4, '0')}`;
+  
+    const message = `*Order Number:* ${formattedOrderNumber}\n*Product Name:* ${product.name}\n*Color:* ${product.color}\n*Price:* ₹${product.price}\n*Size:* ${selectedSize}\n*Quantity:* ${quantity}\n*Image:* ${product.imageUrl}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
+  
   
   return (
     <div className="product-details-container">
