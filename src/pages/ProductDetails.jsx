@@ -14,6 +14,8 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState([]); // Default size is 'M'
   const [availableSizes, setAvailableSizes] = useState([]); // Store fetched sizes
   const [quantity, setQuantity] = useState(1);
+  const [isChecked, setIsChecked] = useState(false);
+const [showTerms, setShowTerms] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -62,8 +64,8 @@ const ProductDetails = () => {
     window.open(url, "_blank");
   };
   
-  
   return (
+    
     <div className="product-details-container">
   <div className="product-scrollable-content">
     {/* Desktop Layout Wrapper */}
@@ -94,7 +96,15 @@ const ProductDetails = () => {
 
       {/* Right - Product Details */}
       <div className="product-info-container">
-        <h1 className="product-title">{product.name}</h1>
+      <h1 className="product-title">
+  {product.name}
+  {product.packOf && (
+    <span style={{ marginLeft: '10px', fontSize: '16px', color: '#555' }}>
+      ({product.packOf})
+    </span>
+  )}
+</h1>
+
 
         <div className="price-section">
   <div className="price-info">
@@ -179,13 +189,46 @@ const ProductDetails = () => {
               <span className="info-value">{product.pattern}</span>
             </div>
           </div>
+          <div className="terms-container">
+  <input
+    type="checkbox"
+    id="termsCheckbox"
+    checked={isChecked}
+    onChange={() => setIsChecked(!isChecked)}
+  />
+  <label htmlFor="termsCheckbox" className="terms-label">
+    I agree to the{" "}
+    <span className="terms-link" onClick={() => setShowTerms(true)}>
+  Terms and Conditions
+</span>
+
+  </label>
+</div>  
         </div>
 
+        
+
         {/* Place Order Button */}
-        <button className="place-order-btn" onClick={handlePurchaseClick}>Place Order</button>
+        <button className="place-order-btn" onClick={handlePurchaseClick} disabled={!isChecked}>
+  Place Order
+</button>
+
       </div>
     </div>
   </div>
+  {showTerms && (
+    <div className="modal-overlay" onClick={() => setShowTerms(false)}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <h3>Terms & Conditions</h3>
+        <p>
+          Without a video proof while unboxing the package, the item will not be returnable.
+        </p>
+        <button className="close-btn" onClick={() => setShowTerms(false)}>
+          Close
+        </button>
+      </div>
+    </div>
+  )}
 </div>
 
   );
