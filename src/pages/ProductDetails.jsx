@@ -6,6 +6,8 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import CircularProgress from '@mui/material/CircularProgress';
+import Slide from '@mui/material/Slide';
+import MuiAlert from '@mui/material/Alert';
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
@@ -15,8 +17,10 @@ const ProductDetails = () => {
   const [availableSizes, setAvailableSizes] = useState([]); // Store fetched sizes
   const [quantity, setQuantity] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
-const [showTerms, setShowTerms] = useState(false);
-
+  const [showTerms, setShowTerms] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -47,6 +51,14 @@ const [showTerms, setShowTerms] = useState(false);
   }
 
   const handlePurchaseClick = () => {
+
+    if (!isChecked) {
+      setAlertMessage("Please agree to the Terms and Conditions before placing your order.");
+      setShowSuccessAlert(true);
+      setTimeout(() => setShowSuccessAlert(false), 3000);
+      return;
+    }
+
     const phoneNumber = "9840402558"; // Your business number
   
     // Get current order number from localStorage or start at 1
@@ -67,10 +79,29 @@ const [showTerms, setShowTerms] = useState(false);
   return (
     
     <div className="product-details-container">
+  
   <div className="product-scrollable-content">
+    
     {/* Desktop Layout Wrapper */}
     <div className="product-layout">
-      
+    <Slide direction="down" in={showSuccessAlert} mountOnEnter unmountOnExit>
+  <MuiAlert
+    elevation={6}
+    variant="filled"
+    sx={{
+      position: 'fixed',
+      backgroundColor: '#F67280',
+      top: 20,
+      right: 20,
+      zIndex: 9999,
+      boxShadow: 3,
+      width: 'auto',
+      minWidth: '250px'
+    }}
+  >
+    {alertMessage}
+  </MuiAlert>
+</Slide>
       {/* Left - Image Section */}
       <div className="product-image-carousel">
   {product.imageUrls && product.imageUrls.length > 0 ? (
@@ -209,7 +240,7 @@ const [showTerms, setShowTerms] = useState(false);
         
 
         {/* Place Order Button */}
-        <button className="place-order-btn" onClick={handlePurchaseClick} disabled={!isChecked}>
+        <button className="place-order-btn" onClick={handlePurchaseClick}>
   Place Order
 </button>
 
@@ -221,7 +252,7 @@ const [showTerms, setShowTerms] = useState(false);
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h3>Terms & Conditions</h3>
         <p>
-          Without a video proof while unboxing the package, the item will not be returnable.
+        To ensure a smooth return process, please record a video while opening your package. Returns without video proof may not be accepted.
         </p>
         <button className="close-btn" onClick={() => setShowTerms(false)}>
           Close
