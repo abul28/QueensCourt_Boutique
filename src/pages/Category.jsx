@@ -18,28 +18,29 @@ const Category = () => {
           setCategories([]);
           return;
         }
-
+    
         const fetchedCategories = await Promise.all(
           categorySnapshot.docs.map(async (doc) => {
             const categoryData = doc.data();
-
+    
+            // Fetch all products in the category
             const productQuery = query(
               collection(firestore, "products"),
               where("category", "==", categoryData.name),
-              orderBy("timestamp", "desc"),
-              limit(1)
+              orderBy("timestamp", "desc"), 
+              limit(10) // Get multiple products, so we can pick the first image
             );
-
+    
             const productSnapshot = await getDocs(productQuery);
-            const latestProduct = productSnapshot.docs[0]?.data();
-
+            const productList = productSnapshot.docs.map(doc => doc.data());
+    
             return {
               ...categoryData,
-              img: latestProduct?.imageUrl || "",
+              img: productList.length > 0 ? productList[0]?.imageUrl || "" : "", // Get first product's image
             };
           })
         );
-
+    
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);

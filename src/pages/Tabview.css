@@ -1,3 +1,7 @@
 html{
     background-color: #F5EFFF;
 }
+
+.tabViewContainer{
+    overflow-x: scroll;
+}
