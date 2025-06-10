@@ -78,12 +78,17 @@ const ConfirmOrder = () => {
         productId: product.id,
         quantity,
         size: selectedSize,
-        productName: productData.name, // ✅ use reliable source
+        productName: productData.name,
         price: productData.price,
         totalPrice: productData.price * quantity,
         image: productData.imageUrls?.[0] || productData.imageUrl,
+        status: "Order", // ✅ Add this line
+        originalPrice: productData.originalPrice,
+        discount: productData.discount,
+        color: productData.color || 'Blue',
         timestamp: serverTimestamp()
       };
+      
       
   
       await addDoc(collection(firestore, "orders"), orderData);

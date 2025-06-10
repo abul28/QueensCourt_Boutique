@@ -31,13 +31,14 @@ const ManageOrders = () => {
       state: {
         ...order,
         productData: {
-          name: order.productName,
-          price: order.price,
-          originalPrice: order.originalPrice,
-          discount: order.discount,
-          imageUrls: [order.image],
-          color: order.color || 'Blue',
-        },
+            name: order.productName,
+            price: order.price,
+            originalPrice: order.originalPrice,
+            discount: order.discount,
+            imageUrls: [order.image],
+            color: order.color || 'Blue',
+          },
+          
       },
     });
   };
