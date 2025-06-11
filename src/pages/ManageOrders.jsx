@@ -28,19 +28,26 @@ const ManageOrders = () => {
 
   const handleViewOrder = (order) => {
     navigate("/orders", {
-      state: {
-        ...order,
-        productData: {
+        state: {
+          ...order,
+          buildingNo: order.buildingNo,
+          streetName: order.streetName,
+          city: order.city,
+          stateName: order.stateName,
+          pincode: order.pincode,
+          status: order.status,
+          id: order.id,
+          productData: {
             name: order.productName,
             price: order.price,
             originalPrice: order.originalPrice,
             discount: order.discount,
             imageUrls: [order.image],
-            color: order.color || 'Blue',
+            color: order.color,
           },
-          
-      },
-    });
+        },
+      });
+      
   };
 
   const filteredOrders = orders.filter(order =>
@@ -51,11 +58,11 @@ const ManageOrders = () => {
   const getBackgroundColor = (status) => {
     switch (status) {
       case "Order":
-        return "#C6EBC9";
+        return "#FF9F9F";
       case "Shipped":
         return "#FFCF81";
       case "Delivered":
-        return "#FF9F9F";
+        return "#C6EBC9";
       default:
         return "white";
     }

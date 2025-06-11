@@ -20,9 +20,11 @@ html{
   .list-item {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
+    /* REMOVE the bottom border and padding to reduce vertical space */
+    padding: 0;
+    margin-bottom: 6px; /* Add controlled spacing instead */
   }
+  
   
   .item-image {
     width: 50px;
@@ -59,17 +61,14 @@ html{
     margin-left: 5px;
   }
   
-  .edit-btn, .delete-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
   .status-background {
-    width: 100%; /* Makes the container take full width */
-    padding: 12px; /* Adds internal spacing */
-    border-radius: 8px; /* Rounds the corners */
-    display: flex; /* Aligns elements properly */
+    width: 100%;
+    padding: 10px; /* Slightly reduced from 12px */
+    border-radius: 8px;
+    display: flex;
     align-items: center;
-    gap: 12px; /* Adds space between elements */
+    gap: 12px;
+    margin-bottom: 5px; /* Already managed in parent */
   }
+  
+  

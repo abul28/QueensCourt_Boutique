@@ -34,7 +34,7 @@ const Orders = () => {
         <img src={productData.imageUrls?.[0] || productData.imageUrl} alt={productData.name} className="product-image" />
         <div className="details">
           <h4>{productData.name}</h4>
-          <Typography variant="body2" color="textSecondary">{productData.color || 'Color: Blue'}</Typography>
+          <Typography variant="body2" color="textSecondary">{productData.color}</Typography>
           <div className="discount-info">
             <span className="discount">↓ {productData.discount}%</span>
             <span className="original-price">₹{productData.originalPrice}</span>
@@ -65,7 +65,7 @@ const Orders = () => {
 
       {/* Shipping Details */}
       <div className="shipping-details">
-        <Typography variant="h6" style={{ marginTop: '1.5rem' }}>Shipping Details</Typography>
+        <Typography variant="h6"  style={{ marginTop: '1rem', fontSize: 17, fontWeight: 600, }}>Shipping Details</Typography>
         <p><strong>Building No:</strong> {buildingNo}</p>
         <p><strong>Street Name:</strong> {streetName}</p>
         <p><strong>City:</strong> {city}</p>
