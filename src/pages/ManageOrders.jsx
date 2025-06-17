@@ -26,6 +26,7 @@ const ManageOrders = () => {
     fetchOrders();
   }, []);
 
+
   const handleViewOrder = (order) => {
     navigate("/orders", {
         state: {

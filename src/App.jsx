@@ -10,6 +10,7 @@ import Category from "./pages/Category";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import Orders from './pages/Orders';
 import ManageOrders from './pages/ManageOrders';
+import TrackingOrders from './pages/TrackingOrders';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/FirebaseService";
 
@@ -21,7 +22,6 @@ function App() {
   const [isGuest, setIsGuest] = useState(
     () => localStorage.getItem("isGuest") === "true"
   );
-  
 
   useEffect(() => {
     // Ensure local storage is initialized properly
@@ -99,6 +99,7 @@ const MainContent = ({ searchQuery, setSearchQuery, isAuthenticated, setIsAuthen
         <Route path="/confirm-order" element={<ConfirmOrder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/manageOrders" element={<ManageOrders />} />
+        <Route path="/trackingOrders/:orderId" element={<TrackingOrders />} />
         <Route path="/categories" element={<Category />} />
         <Route 
           path="/products" 
